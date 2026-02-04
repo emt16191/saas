@@ -1,0 +1,35 @@
+@use './var.scss';
+@use './space.scss';
+
+// @mixin linkAction {
+//     color: var.color('dblue');
+//     position: relative;
+//     padding-right: calc(space.space(2) + 7px);
+
+//     &::after {
+//         display: block;
+//         content: '';
+//         width: 6px;
+//         height: 14px;
+//         background-image: url('/svg/btnArrow.svg');
+//         position: absolute;
+//         right: 0;
+//         top: calc(50% - 6px);
+//     }
+
+//     ;
+// }
+
+@mixin linkAction {
+    color: var.color('dblue');
+
+    &::after {
+        display: inline-block;
+        content: '';
+        width: 6px;
+        height: 12px;
+        background-image: url('/svg/btnArrow.svg');
+        background-repeat: no-repeat;
+        margin-left: space.space(2);
+    }
+}

@@ -1,0 +1,226 @@
+@use '../../lib/service.scss' as s;
+
+.header {
+    @extend .section;
+    background-color: s.color(backgroundDark);
+}
+
+.header__content {
+    @extend .section__content;
+    display: flex;
+    padding: s.space(4) 10px;
+    justify-content: space-between;
+}
+
+.header__block {
+    display: flex;
+    gap: s.space(8);
+    align-items: center;
+}
+
+.header__icon {
+    @include s.click;
+}
+
+.header__link {
+    color: s.color(whiteLight);
+    @include s.click;
+    font-size: s.size('small');
+}
+
+.ad {
+    @extend .section;
+    background-color: s.color(background);
+}
+
+.ad__content {
+    @extend .section__content;
+    display: flex;
+    padding: s.space(3) s.space(2.5);
+    justify-content: space-between;
+    align-items: center;
+    gap: s.space(5);
+}
+
+.ad__title {
+    color: s.color(fontDark);
+    font-size: s.size('standart');
+
+    font-weight: 400;
+    line-height: 147%;
+    text-align: center;
+}
+
+.ad__action {
+    @include s.click;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: s.space(2);
+}
+
+.ad__link {
+    @include s.linkAction;
+    font-size: s.size('standart');
+    text-wrap-mode: nowrap;
+    font-weight: 400;
+    line-height: 147%;
+    text-align: center;
+}
+
+.product {
+    @extend .section;
+    padding-top: s.space(20);
+    padding-bottom: s.space(20);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.product__content {
+    display: grid;
+    gap: s.space(5);
+    text-align: center;
+    align-content: center;
+}
+
+.glass {
+    backdrop-filter: saturate(180%) blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 12 30px 10px rgba(0, 0, 0, 0.1);
+    max-height: fit-content;
+    width: 100%;
+}
+
+.product__title {
+    font-size: 56px;
+    font-weight: 600;
+    color: s.color(fontDark);
+}
+
+.product__description {
+    font-size: 28px;
+}
+
+.product__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: s.space(5);
+}
+
+.product__link {
+    @include s.linkAction;
+    @include s.click;
+    font-size: 20px;
+}
+
+.product--big {
+    max-height: 700px;
+    height: 100vh;
+    background-size: cover;
+
+    @media all and (width < s.screen('tablet')) {
+        background-size: 150%;
+        max-height: 500px;
+    }
+}
+
+.product--small {
+    max-height: 580px;
+    height: 100vh;
+    background-size: cover;
+
+    .product__title {
+        font-size: 40px;
+    }
+
+    .product__description {
+        font-size: 20px;
+    }
+
+    .product__link {
+        font-size: s.size('default');
+    }
+}
+
+.product--dark {
+
+    .product__title,
+    .product__description {
+        color: s.color('background');
+    }
+}
+
+.product--light {
+
+    .product__title,
+    .product__description {
+        color: s.color('fontDark');
+    }
+}
+
+.product--top {
+    .product__content {
+        align-content: flex-start;
+    }
+}
+
+.product--bottom {
+    .product__content {
+        align-content: flex-end;
+    }
+}
+
+$productImage: (
+    'iphone-pro' '/img/iphone-pro.png' #000,
+    'iphone' '/img/iphone.png' #fafafa,
+    'iwatch' '/img/watch.png' #000,
+    'tradein' '/img/tradein.png' #fBfBfd,
+    'wwdc' '/img/wwdc.png' #000,
+    'iPad' '/img/iPad.png' #fBfBfd,
+    'business' '/img/business.png' #000,
+    'gift' '/img/gift.png' #fBfBfd,
+    'card' '/img/card.png' #fBfBfd,
+);
+
+@each $class, $url, $baccol in $productImage {
+    .product--#{$class} {
+        background-image: url(#{$url});
+        background-color: $baccol;
+    }
+}
+
+.footer {
+    @extend .section;
+}
+
+.footer__content {
+    @extend .section__content;
+    @extend .grid-resize;
+    gap: s.space(5);
+    padding: s.space(10) s.space(2.5);
+    align-items: flex-start;
+    font-size: s.size('small');
+}
+
+.footer__block,
+.footer__block_links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: s.space(4);
+}
+
+.footer__block_links {
+    gap: s.space(3);
+}
+
+.footer__block_title {
+    font-weight: 600;
+    color: s.color('fontDark');
+}
+
+.footer__link {
+    @include s.click;
+    font-weight: 400;
+    color: s.color('backgroundDark');
+}
